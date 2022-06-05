@@ -3,7 +3,7 @@ import Book from './Book'
 
 const BookSection = props => {
     const books = props.books.map(v => {
-        return <Book key={v.id} name={v.name} id={v.id}/>
+        return <Book key={v.id} book={v}/>
     })
     return <div className={classes.main}>
     <div className={classes.year}>
