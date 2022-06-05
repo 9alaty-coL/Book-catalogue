@@ -1,0 +1,29 @@
+.main{
+    // border: 1px solid #888;
+    // display: inline-block;
+    box-shadow: #333 0px 0px 5px;
+    width: 180px;
+    margin: 10px;
+    // height: 100%;
+    cursor: pointer;
+    &:hover{
+        background-color: #ddd;
+    }
+    &>img{
+        width: 100%;
+        padding: 20px 40px 0px 40px;
+        box-sizing: border-box;
+        border-bottom: 1px solid #bbb;
+    }
+    &>.info{
+        // height: 100px;
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        &>.name{
+            word-wrap: break-word;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+    }
+}

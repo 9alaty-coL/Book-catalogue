@@ -1,0 +1,18 @@
+.main{
+    // border: 1px solid #333;
+    padding: 20px 0px 10px 100px;
+    margin-top: 50px;
+    border-top: 10px solid #ddd;
+    .year{
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        font-family: 'Courier New', Courier, monospace;
+    }
+    .books{
+        display: flex;
+        align-items: stretch;
+        flex-wrap: wrap;
+
+    }
+}
