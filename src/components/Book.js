@@ -15,7 +15,7 @@ const Book = props => {
                 <span className={classes.isbn}><b>ISBN:</b> {props.book.isbn}</span>
             </div>
             <div className={classes.btnGroup}>
-            <Link to={'book/' + props.book.id} style={{textDecoration: "none", color:"black"}}>
+            <Link to={'edit/' + props.book.id} style={{textDecoration: "none", color:"black"}}>
                 <Button style={{marginRight:"5px"}} variant='outlined' color='primary'>Edit</Button>
             </Link>
                 <Button variant='outlined' color='error'>Delete</Button>

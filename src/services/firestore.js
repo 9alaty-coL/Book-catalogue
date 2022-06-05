@@ -1,4 +1,4 @@
-import {collection, getDocs,getDoc, getFirestore, doc} from 'firebase/firestore'
+import {collection, getDocs,getDoc, getFirestore, doc, setDoc} from 'firebase/firestore'
 import {initializeApp} from 'firebase/app'
 import { async } from '@firebase/util';
 
@@ -22,15 +22,38 @@ const db = getFirestore(app)
 const colRef = collection(db, 'Books')
 
 export const getBooks = async () => {
-    const res = await getDocs(colRef)
-    // return res.docs
-    const books = res.docs.map(doc => {return {id: doc.id, ...doc.data()}})
-    return books
+    try {
+        const res = await getDocs(colRef)
+        // return res.docs
+        const books = res.docs.map(doc => {return {id: doc.id, ...doc.data()}})
+        return books
+    } catch (error) {
+        throw(new Error(error.message))
+    }
 }
 
-
 export const getBook = async (id) => {
-    const docRef = doc(db, 'Books', id)
-    const res = await getDoc(docRef)
-    return {id: id,...res.data()}
+    try {
+        const docRef = doc(db, 'Books', id)
+        const res = await getDoc(docRef)
+        return {id: id,...res.data()}
+    } catch (error) {
+        throw(new Error(error.message))
+    }
+}
+
+export const setBook = async(data) => {
+    try {
+        await setDoc(doc(colRef), data)
+    } catch (error) {
+        throw (new Error(error.message))
+    }
+}
+
+export const editBook = async(data) => {
+    try{
+        await setDoc(doc(colRef, data.bookId), data.data)
+    } catch (error) {
+        throw (new Error(error.message))
+    }
 }

@@ -14,7 +14,6 @@ import {
   Select,
   MenuItem,
   Button,
-  InputLabel,
   Box,
   FormControl,
 } from "@mui/material";
@@ -63,7 +62,7 @@ const Home = () => {
   //Handle data from react query
   let content;
   if (books.isLoading) {
-    content = <CircularProgress />;
+    content = <CircularProgress  size="80px" style={{margin:"100px"}}/>;
   } else if (books.isError) {
     content = <span style={{ color: "red" }}>{books.error}</span>;
   } else if (books.isSuccess) {
@@ -89,6 +88,7 @@ const Home = () => {
     content = bookSections;
   }
 
+
   return (
     <div className={classes.main}>
       <div className={classes.title}>Welcome to book catalogue!!</div>
@@ -97,6 +97,7 @@ const Home = () => {
           variant="contained"
           color="success"
           style={{ padding: "10px 20px 10px 20px" }}
+          onClick={()=>navigate('/add')}
         >
           <FontAwesomeIcon
             icon={faPlusCircle}

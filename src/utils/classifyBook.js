@@ -10,6 +10,12 @@ const addRecommended = (store, books) => {
     }
 }
 
+const sortBookByAlphabet = (store) => {
+    for (let k of Object.keys(store)){
+        store[k].sort((a, b) => a.name > b.name ? 1 : -1)
+    }
+}
+
 export const classifyBookByYear = (books) => {
     const store = {} 
     // store like a map with key is published year
@@ -26,6 +32,7 @@ export const classifyBookByYear = (books) => {
     })
 
     addRecommended(store, books)
+    sortBookByAlphabet(store)
 
     return store
 }
@@ -46,6 +53,7 @@ export const classifyBookByRating = (books) => {
     })
 
     addRecommended(store, books)
+    sortBookByAlphabet(store)
 
     return store
 }
@@ -68,6 +76,7 @@ export const classifyBookByAuthor = (books) => {
     })
 
     addRecommended(store, books)
+    sortBookByAlphabet(store)
 
     return store
 }
