@@ -9,25 +9,35 @@ import { setBook } from '../services/firestore';
 import isIsbn from 'is-isbn'
 
 const AddBook = () => {
-    const [isbnState, setIsbnState] = useState('')
-    const mutation = useMutation(setBook)
-    const [numberOfAuthors, setNumberOfAuthors] = useState(1)
-    const [authorsArray, setAuthorsArray] = useState([])
+    const [isbnState, setIsbnState] = useState('') // isbn state to validate
+    const mutation = useMutation(setBook) // mutation to add book to firestore
+    const [numberOfAuthors, setNumberOfAuthors] = useState(1) // control number of authors
+    const [authorsArray, setAuthorsArray] = useState([]) // control list of authors
+
+    // input Ref
     const nameRef = useRef()
     const ratingRef = useRef()
     const yearRef = useRef()
     const isbnRef = useRef()
+
+    // navigate hook
     const navigate = useNavigate()
+
+    // if add successfully than redirect to home
     useEffect(() => {
         if (mutation.isSuccess){
             navigate('/')
         }
     }, [mutation.isSuccess]);
+
+    // add author to authorsArray
     const onChangeAuthorHandler = (i, e) => {
         let prev = [...authorsArray]
         prev[i] = e.target.value
         setAuthorsArray(prev)
     }
+
+    // render authorInput base on number of authors
     const getAuthorInput = nums => {
         const res = []
         if (nums > 0 && nums < 11){
@@ -37,9 +47,13 @@ const AddBook = () => {
         }
         return res
     }
+
+    // handle change for number of author
     const onchangeHandler = e => {
         setNumberOfAuthors(e.target.value)
     }
+
+    // handle submit
     const submitHandler = e => {
         e.preventDefault()
         if (!!isbnState && !isIsbn.validate(isbnState)){
@@ -60,6 +74,7 @@ const AddBook = () => {
         }
         mutation.mutate(mutatedBook)
     }
+    
     return <div className={classes.main}>
         <div className={classes.back}>
             <FontAwesomeIcon icon={faArrowLeft} onClick={()=>navigate(-1)}/>

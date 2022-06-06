@@ -13,29 +13,35 @@ import { editBook } from '../services/firestore'
 
 const Detail = () => {
     const params = useParams()
-    const bookId = params.bookId
+    const bookId = params.bookId // book Id from params
     const mutation = useMutation(editBook)
     const book = useQuery(['getBook', bookId], getBook.bind(null, bookId), {cacheTime: 0})
 
-    const [authorsArray, setAuthorsArray] = useState([])
+    const [authorsArray, setAuthorsArray] = useState([]) // control array of uthor
+
+    // input Ref
     const nameRef = useRef()
     const ratingRef = useRef()
     const yearRef = useRef()
     const isbnRef = useRef()
     const navigate = useNavigate()
 
+    // if data edited than redirect to home
     useEffect(() => {
         if (mutation.isSuccess){
             navigate('/')
         }
     }, [mutation.isSuccess]);
 
+    // if book detail loaded than set default value for authors
     useEffect(() => {
         if (book.data?.authors){
             setAuthorsArray(book.data.authors)
         }
     }, [book.isSuccess])
 
+
+    // handle submit
     const submitHandler = e => {
         e.preventDefault()
         mutation.mutate({
@@ -50,12 +56,16 @@ const Detail = () => {
         })
     }
 
+
+    // add new author 's name to array
     const onChangeAuthorName = (index, e) => {
         let newAuthorArray = [...authorsArray]
         newAuthorArray[index] = e.target.value
         setAuthorsArray(newAuthorArray)
     }
 
+
+    // variable to render
     let detail
     if (book.isLoading){
         detail = <CircularProgress />

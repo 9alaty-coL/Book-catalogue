@@ -2,6 +2,8 @@ import {collection, getDocs,getDoc, getFirestore, doc, setDoc, deleteDoc} from '
 import {initializeApp} from 'firebase/app'
 import { async } from '@firebase/util';
 
+
+// config vars
 var firebaseConfig = {
     // apiKey: "AIzaSyA7f4C7_PNupH0uCYfMsYrE6G9Ho49cwzw",
     authDomain: "book-catalogue-d1b90.firebaseapp.com",
@@ -9,10 +11,6 @@ var firebaseConfig = {
     // databaseURL: "https://Books.firebaseio.com",
     projectId: "book-catalogue-d1b90",
     storageBucket: "book-catalogue-d1b90.appspot.com",
-    // messagingSenderId: "SENDER_ID",
-    // appId: "APP_ID",
-    // For Firebase JavaScript SDK v7.20.0 and later, `measurementId` is an optional field
-    // measurementId: "G-MEASUREMENT_ID",
 };
 
 const app = initializeApp(firebaseConfig);

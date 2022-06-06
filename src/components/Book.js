@@ -10,11 +10,12 @@ import { CircularProgress } from '@mui/material'
 const BOOK_URL = 'https://www.adazing.com/wp-content/uploads/2019/02/open-book-clipart-03.png'
 
 const Book = props => {
-    const [open, setOpen] = useState(false);
-    // const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    const [open, setOpen] = useState(false); // state for open deleteModal
+    const handleClose = () => setOpen(false); // handle close deleteModal
     const mutation = useMutation(deleteBook)
 
+
+    // Check if it mutated than refetch all books
     useEffect(()=>{
         if (mutation.isSuccess){
             props.refetch()
@@ -22,6 +23,8 @@ const Book = props => {
         }
     }, [mutation.isSuccess])
 
+
+    // click delete
     const deleteHandler = (id) => {
         mutation.mutate({bookId: id})
     }

@@ -15,6 +15,7 @@ const style = {
     p: 4,
 };
 
+// portal for modal
 const portal = document.getElementById("root-portal");
 
 const ModalPopup = props => <Modal
