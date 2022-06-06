@@ -15,7 +15,7 @@ const Detail = () => {
     const params = useParams()
     const bookId = params.bookId
     const mutation = useMutation(editBook)
-    const book = useQuery(['getBook', bookId], getBook.bind(null, bookId))
+    const book = useQuery(['getBook', bookId], getBook.bind(null, bookId), {cacheTime: 0})
 
     const [authorsArray, setAuthorsArray] = useState([])
     const nameRef = useRef()

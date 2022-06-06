@@ -1,4 +1,4 @@
-import {collection, getDocs,getDoc, getFirestore, doc, setDoc} from 'firebase/firestore'
+import {collection, getDocs,getDoc, getFirestore, doc, setDoc, deleteDoc} from 'firebase/firestore'
 import {initializeApp} from 'firebase/app'
 import { async } from '@firebase/util';
 
@@ -53,6 +53,14 @@ export const setBook = async(data) => {
 export const editBook = async(data) => {
     try{
         await setDoc(doc(colRef, data.bookId), data.data)
+    } catch (error) {
+        throw (new Error(error.message))
+    }
+}
+
+export const deleteBook = async(data) => {
+    try {
+        await deleteDoc(doc(db, 'Books', data.bookId))
     } catch (error) {
         throw (new Error(error.message))
     }

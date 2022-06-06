@@ -3,7 +3,7 @@ import { useQuery } from "react-query";
 import BookSection from "../components/BookSection";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { getBooks, getBook } from "../services/firestore";
+import { getBooks } from "../services/firestore";
 import {
   classifyBookByYear,
   classifyBookByRating,
@@ -21,6 +21,7 @@ import { useState, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const [fetch, setFetch] = useState(false)
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const [groupOption, setGroupOption] = useState("year"); // state for group by
@@ -42,7 +43,7 @@ const Home = () => {
   };
 
   // Call react-query
-  const books = useQuery("getBooks", fetchBooks);
+  const books = useQuery(["getBooks", fetch], fetchBooks);
 
   // Handle option group by
   useEffect(() => {
@@ -82,12 +83,11 @@ const Home = () => {
         );
         continue;
       }
-      bookSections.push(<BookSection key={k} year={k} books={booksData[k]} />);
+      bookSections.push(<BookSection key={k} year={k} books={booksData[k]} refetch={()=>setFetch(prev=>!prev)} />);
     }
     bookSections = bookSections.reverse();
     content = bookSections;
   }
-
 
   return (
     <div className={classes.main}>
@@ -115,7 +115,6 @@ const Home = () => {
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={groupOption}
-              // label="Group by"
               onChange={handleChange}
             >
               <MenuItem value={"year"}>Year</MenuItem>
