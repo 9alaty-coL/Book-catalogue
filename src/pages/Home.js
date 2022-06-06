@@ -79,7 +79,7 @@ const Home = () => {
     for (let k of Object.keys(booksData)) {
       if (k === "undefined") {
         bookSections.unshift(
-          <BookSection key={k} year={k} books={booksData[k]} />
+          <BookSection key={k} year={k} books={booksData[k]} refetch={()=>setFetch(prev=>!prev)}/>
         );
         continue;
       }
