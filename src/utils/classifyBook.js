@@ -1,3 +1,8 @@
+// ramdom a number between min and max
+const getRamdom = (min, max) => {
+    return Math.floor(Math.random() * (max - min) ) + min
+}
+
 const addRecommended = (store, books) => {
     // add recommended book to store
     const goodBook = books.filter(v => {
@@ -6,7 +11,7 @@ const addRecommended = (store, books) => {
     goodBook.sort((a, b) => - a.rating + b.rating) // sort books by rating
 
     if (goodBook.length > 0){
-        store.Recommended = [goodBook[0]]
+        store.Recommended = [goodBook[getRamdom(0, goodBook.length)]]
     }
 }
 
