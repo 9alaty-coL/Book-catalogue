@@ -1,6 +1,24 @@
-# Getting Started with Create React App
+# Book catalogue
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is the Saritasa's internship challenge
+<br/>
+<img src="https://www.adazing.com/wp-content/uploads/2019/02/open-book-clipart-03.png" width="170px">
+## Deploy
+
+Web deployed at [Book-catalogue](https://book-catalogue-saritasa.netlify.app/)
+
+## Features
+
+All features mentioned in the test including additional functions have been implemented
+
+## Techniques
+
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![React Query](https://img.shields.io/badge/-React%20Query-FF4154?style=for-the-badge&logo=react%20query&logoColor=white)
+![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+	![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
+  ![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white)
+  ![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase)
 
 ## Available Scripts
 
