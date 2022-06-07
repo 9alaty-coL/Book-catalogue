@@ -44,15 +44,29 @@ const Detail = () => {
     // handle submit
     const submitHandler = e => {
         e.preventDefault()
+        const mutatedBook = {
+            name: nameRef.current.value,
+            authors: authorsArray,
+        }
+        if (+yearRef.current.value){
+            mutatedBook.year = +yearRef.current.value
+        }
+        if (+ratingRef.current.value){
+            mutatedBook.rating = +ratingRef.current.value
+        }
+        if (isbnRef.current.value){
+            mutatedBook.isbn = isbnRef.current.value
+        }
         mutation.mutate({
             bookId: bookId,
-            data: {
-                name: nameRef.current.value,
-                authors: authorsArray,
-                year: +yearRef.current.value ?? null,
-                rating: +ratingRef.current.value ?? null,
-                isbn: isbnRef.current.value ?? null,
-            }
+            data: mutatedBook,
+            // data: {
+            //     name: nameRef.current.value,
+            //     authors: authorsArray,
+            //     year: +yearRef.current.value ?? null,
+            //     rating: +ratingRef.current.value ?? null,
+            //     isbn: isbnRef.current.value ?? null,
+            // }
         })
     }
 
