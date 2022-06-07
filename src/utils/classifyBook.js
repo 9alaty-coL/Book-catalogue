@@ -5,12 +5,13 @@ const getRamdom = (min, max) => {
 
 const addRecommended = (store, books) => {
     // add recommended book to store
-    const goodBook = books.filter(v => {
+    let goodBook = books.filter(v => {
         return v.year >= (new Date()).getFullYear() - 3 // pick books published at least 3 years
     })
     goodBook.sort((a, b) => - a.rating + b.rating) // sort books by rating
 
     if (goodBook.length > 0){
+        goodBook = goodBook.filter(b => goodBook[0].rating === b.rating)
         store.Recommended = [goodBook[getRamdom(0, goodBook.length)]]
     }
 }
